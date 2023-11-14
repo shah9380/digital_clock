@@ -91,11 +91,18 @@ span {
                 justify-content: start;
             }
         }
+        #Greeting{
+            font-size: 28px;
+            margin-bottom: 14px;
+            padding: 8px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="watch">
+            <h5 id="Greeting"></h5>
             <h3>Digital Clock</h3>
             <div class="time">
                 <div class="display">
@@ -115,12 +122,14 @@ span {
         <div class="AMPM" >
             <small id="AMPM" style="padding: 4px 4px 4px 4px; font-size: 18px;"></small>
         </div>
+        
     </div>
     <script>
         let hoursT = document.getElementById('hours');
         let minutesT = document.getElementById('minutes');
         let secondsT =  document.getElementById('seconds');
         let AMPM = document.getElementById('AMPM');
+        let Greeting = document.getElementById('Greeting');
             let now = new Date();
             let hours = now.getHours();
             let minutes = now.getMinutes();
@@ -143,10 +152,16 @@ span {
             }
             if(hours>11){
                 AMPM.innerHTML = "PM";
-
             }else{
                 AMPM.innerHTML = "AM";
             }   
+            if(hours>=4 && hours<12){
+                Greeting.innerHTML = `<img src="./Morning.png" alt="" style="height: 60px">`;
+            }else if(hours>=12 && hours<5){
+                Greeting.innerHTML = `<img src="./emojipng.com-14001573.png" alt="" style="height: 60px">`
+            }else{
+                Greeting.innerHTML = `<img src="./evening.png" alt="" style="height: 60px">`;
+            }
             AMPM.style.opacity = 1;
         setInterval(()=>{
             now = new Date();
@@ -173,6 +188,13 @@ span {
                 AMPM.innerHTML = "PM";
             }else{
                 AMPM.innerHTML = "AM";
+            }
+            if(hours>=4 && hours<12){
+                Greeting.innerHTML = `<img src="./Morning.png" alt="" style="height: 60px">`;
+            }else if(hours>=12 && hours<5){
+                Greeting.innerHTML = `<img src="./emojipng.com-14001573.png" alt="" style="height: 60px">`
+            }else{
+                Greeting.innerHTML = `<img src="./evening.png" alt="" style="height: 60px">`;
             }
             AMPM.style.opacity = 1;
         },1_000);
